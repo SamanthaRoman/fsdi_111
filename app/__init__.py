@@ -2,13 +2,22 @@
 # -*- coding: utf8 -*-                  #
 """Sample hello world Flask app"""
 
-from flask import Flask
+from flask import Flask                 # from the flask module import the Flask class
 
-app = Flask(__name__)
+app = Flask(__name__)                   # Create an instance of Flask into app
+                                        # app now becomes an "object"
 
-@app.route("/")
-def hello():
-    return "<h1>Hello, world!</h1>"
+@app.route("/aboutme")                  # Flask decorate to map routes to "view function"
+def aboutme():                          # Our function, in flask is a "view function"
+    me = {                              # Python dictionary. Dictionaries are key-value pairs.
+        "first_name": "Samantha",
+        "last_name": "Roman",
+        "hobbies": "Shopping",
+        "is_active": True
+    }
+    return me                           # In flask, when you return a dictionary, if all
+                                        # the fields are compatible with JSON,
+                                        # it will be automatically converted into JSON for you.
 
 
 @app.route("/products")
